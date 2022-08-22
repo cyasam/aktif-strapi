@@ -8,16 +8,23 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "getDatabase": "docker cp aktif-strapi-container:/opt/app/.tmp/data.db ./tmp-backup",
-    "createImage": "npm run getDatabase && docker build . -t cyasam/aktif-strapi",
+    "docker:create": "npm run getDatabase && npm run createImage",
+    "docker:run": "npm run runContainer",
+    "docker:db": " npm run setDatabase && npm run restartContainer",
+    "getDatabase": "docker cp aktif-strapi-container:/opt/app/.tmp/data.db ./tmp-backup/.",
+    "setDatabase": "docker cp ./tmp-backup/data.db aktif-strapi-container:/opt/app/.tmp/.",
+    "createImage": "docker build . -t cyasam/aktif-strapi",
+    "createContainer": "docker container create -i -t --name aktif-strapi-container cyasam/aktif-strapi",
     "runContainer": "docker run -p 1337:1337 --name aktif-strapi-container cyasam/aktif-strapi",
     "startContainer": "docker start aktif-strapi-container",
     "stopContainer": "docker stop aktif-strapi-container",
+    "restartContainer": "docker restart aktif-strapi-container",
     "killContainer": "docker rm -f aktif-strapi-container",
     "openImage": "docker exec -it aktif-strapi-container bash",
     "pushImage": "docker push cyasam/aktif-strapi"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "copyfiles": "^2.4.1"
   },
   "dependencies": {
@@ -30,7 +37,8 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "5acd6c5e-daba-4962-8357-d9206bb71c6f"
+    "uuid": "5acd6c5e-daba-4962-8357-d9206bb71c6f",
+    "telemetryDisabled": true
   },
   "engines": {
     "node": ">=12.x.x <=16.x.x",
