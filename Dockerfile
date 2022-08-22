@@ -9,6 +9,7 @@ COPY ./package.json ./package-lock.json ./
 ENV PATH /opt/node_modules/.bin:$PATH
 RUN npm install
 WORKDIR /opt/app
+COPY ./tmp-backup ./.tmp
 COPY ./ .
 RUN npm run build
 

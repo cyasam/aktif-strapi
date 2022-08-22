@@ -8,16 +8,21 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "createImage": "docker build . -t aktif-strapi-image",
+    "getDatabase": "docker cp aktif-strapi-container:/opt/app/.tmp/data.db ./tmp-backup",
+    "createImage": "npm run getDatabase && docker build . -t aktif-strapi-image",
     "runContainer": "docker run -p 1337:1337 --name aktif-strapi-container aktif-strapi-image",
+    "startContainer": "docker start aktif-strapi-container",
+    "stopContainer": "docker stop aktif-strapi-container",
     "killContainer": "docker rm -f aktif-strapi-container",
-    "openImage": "docker run -it --name aktif-strapi-container aktif-strapi-image sh"
+    "openImage": "docker exec -it aktif-strapi-container bash"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  },
   "dependencies": {
-    "@strapi/strapi": "4.3.4",
-    "@strapi/plugin-users-permissions": "4.3.4",
     "@strapi/plugin-i18n": "4.3.4",
+    "@strapi/plugin-users-permissions": "4.3.4",
+    "@strapi/strapi": "4.3.4",
     "better-sqlite3": "7.4.6"
   },
   "author": {
