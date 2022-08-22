@@ -14,7 +14,8 @@
     "startContainer": "docker start aktif-strapi-container",
     "stopContainer": "docker stop aktif-strapi-container",
     "killContainer": "docker rm -f aktif-strapi-container",
-    "openImage": "docker exec -it aktif-strapi-container bash"
+    "openImage": "docker exec -it aktif-strapi-container bash",
+    "pushImage": "docker push cyasam/aktif-strapi"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1"
