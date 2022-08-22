@@ -8,9 +8,10 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "docker:create": "npm run getDatabase && npm run createImage",
+    "docker:create": "npm run createImage",
     "docker:run": "npm run runContainer",
-    "docker:db": " npm run setDatabase && npm run restartContainer",
+    "docker:db": "npm run setDatabase && npm run restartContainer",
+    "docker:kill": "npm run getDatabase && npm run killContainer",
     "getDatabase": "docker cp aktif-strapi-container:/opt/app/.tmp/data.db ./tmp-backup/.",
     "setDatabase": "docker cp ./tmp-backup/data.db aktif-strapi-container:/opt/app/.tmp/.",
     "createImage": "docker build . -t cyasam/aktif-strapi",
@@ -20,7 +21,7 @@
     "stopContainer": "docker stop aktif-strapi-container",
     "restartContainer": "docker restart aktif-strapi-container",
     "killContainer": "docker rm -f aktif-strapi-container",
-    "openImage": "docker exec -it aktif-strapi-container bash",
+    "openContainer": "docker exec -it aktif-strapi-container bash",
     "pushImage": "docker push cyasam/aktif-strapi"
   },
   "devDependencies": {
