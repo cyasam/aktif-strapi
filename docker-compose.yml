@@ -9,4 +9,7 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - ./tmp-backup:/opt/app/.tmp
+      - db-data:/opt/app/.tmp
+volumes:
+  db-data:
+    driver: local
