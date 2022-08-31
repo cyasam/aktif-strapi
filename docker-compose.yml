@@ -1,0 +1,12 @@
+version: "0.1.0"
+
+services:
+  cms:
+    image: cyasam/aktif-strapi
+    environment:
+      - APP_KEYS=uZvN+XsiNehGoyRwjtnEug==,OtADSiTUwNc+B8IPsetmrw==,WcYKQ+0jAziQv376jSdaqA==,3TAJ4JcY9vQxM6/c5khVYg==
+      - API_TOKEN_SALT=ZjmJLmGfu9FSZZIXuU9Png==
+      - ADMIN_JWT_SECRET=nbCXrn7NuVRvh/32+DKA5w==
+      - JWT_SECRET=mVcPSeMBWw0xU0ybp9crrA==
+    ports:
+      - "1337:1337"
