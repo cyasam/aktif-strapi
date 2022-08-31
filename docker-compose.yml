@@ -9,4 +9,4 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - ./app:/srv/app
+      - ./tmp-backup:/opt/app/.tmp
