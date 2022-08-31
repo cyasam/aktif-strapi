@@ -9,7 +9,7 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - db-data:/opt/app/.tmp
+      - data:/opt/app/.tmp
 volumes:
-  db-data:
+  data:
     driver: local
